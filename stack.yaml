@@ -1,6 +1,7 @@
 resolver: lts-18.18
 
 extra-deps:
+  - co-log-0.4.0.1
   - elm-street-0.1.0.4
   - postgresql-simple-migration-0.1.15.0
   - prometheus-client-1.1.0
