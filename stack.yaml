@@ -1,5 +1,7 @@
 resolver: lts-18.18
 
+allow-newer: true  # for ansi-terminal-0.10 (latest 0.11), dep of co-log
+
 extra-deps:
   - co-log-0.4.0.1
   - elm-street-0.1.0.4
