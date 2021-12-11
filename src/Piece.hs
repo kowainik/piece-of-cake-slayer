@@ -1,4 +1,4 @@
-module PieceOfCakeSlayer
+module Piece
        ( someFunc
        ) where
 

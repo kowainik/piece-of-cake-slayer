@@ -1,6 +1,10 @@
-resolver: lts-13.27
+resolver: lts-18.18
 
-extra-deps: [base-noprelude-4.12.0.0]
+extra-deps:
+  - relude-1.0.0.1
 
-ghc-options:
-  "$locals": -fhide-source-paths
+  - github: kowainik/cake-slayer
+    commit: 20e0b0cf3277a6f63354c72758630fd3a22fef5c
+
+  - github: holmusk/postgresql-simple-named
+    commit: 394e6ff593666616f78f59a7b4817608a2950370

@@ -1,6 +1,6 @@
 module Main (main) where
 
-import PieceOfCakeSlayer (someFunc)
+import Piece (someFunc)
 
 
 main :: IO ()
