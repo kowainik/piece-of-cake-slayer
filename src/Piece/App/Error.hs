@@ -7,6 +7,7 @@ module Piece.App.Error
     ) where
 
 import Network.HTTP.Types.Header (HeaderName)
+import PgNamed (PgNamedError)
 
 import qualified CakeSlayer.Error as CakeSlayer
 
@@ -39,4 +40,10 @@ data AppError
     format that the server can understand.
     -}
     | HeaderDecodeError Text
+
+    {- | Data base specific errors. -}
+    | DbError Text
+
+    {- | Data base named parameters errors. -}
+    | DbNamedError PgNamedError
     deriving stock (Show, Eq)

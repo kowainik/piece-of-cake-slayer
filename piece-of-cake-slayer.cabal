@@ -47,6 +47,7 @@ common common-options
                        DeriveFunctor
                        DeriveGeneric
                        DerivingStrategies
+                       DerivingVia
                        FlexibleContexts
                        FlexibleInstances
                        GeneralizedNewtypeDeriving
@@ -67,15 +68,26 @@ library
   import:              common-options
   hs-source-dirs:      src
   exposed-modules:     Piece
-                         Piece.App
+                      -- Piece.App
                            Piece.App.Env
                            Piece.App.Error
                            Piece.App.Monad
+                      -- Piece.Core
+                           Piece.Core.Id
+                           Piece.Core.Item
+                           Piece.Core.WithId
+                      -- Piece.Db
+                           Piece.Db.Item
+                           Piece.Db.Schema
 
-  build-depends:       cake-slayer ^>= 0.0
+  build-depends:       aeson ^>= 1.5
+                     , cake-slayer ^>= 0.0
                      , co-log ^>= 0.4
+                     , elm-street ^>= 0.1
                      , http-types ^>= 0.12
                      , mtl
+                     , postgresql-simple ^>= 0.6
+                     , postgresql-simple-named ^>= 0.0
                      , unliftio ^>= 0.2
 
 executable piece-of-cake-slayer
