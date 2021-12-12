@@ -2,7 +2,6 @@
 
 module Piece.Db.Schema
        ( prepareDb
-       , seedDb
        ) where
 
 import CakeSlayer.Db (WithDb, executeRaw_)
@@ -14,7 +13,7 @@ import CakeSlayer.Db (WithDb, executeRaw_)
 2. Created tables from scratch.
 -}
 prepareDb :: (WithDb env m) => m ()
-prepareDb = teardownDb >> setupDb
+prepareDb = teardownDb >> setupDb >> seedDb
 
 -- | Create tables from the @sql/schema.sql@ file.
 setupDb :: (WithDb env m) => m ()
