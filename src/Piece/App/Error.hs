@@ -4,12 +4,16 @@
 module Piece.App.Error
     ( WithError
     , AppError (..)
+    , toHttpError
     ) where
 
+import Data.CaseInsensitive (foldedCase)
 import Network.HTTP.Types.Header (HeaderName)
 import PgNamed (PgNamedError)
+import Servant.Server (err401, err404, err417, err500, errBody)
 
 import qualified CakeSlayer.Error as CakeSlayer
+import qualified Servant.Server as Servant (ServerError)
 
 
 type WithError m = CakeSlayer.WithError AppError m
@@ -47,3 +51,15 @@ data AppError
     {- | Data base named parameters errors. -}
     | DbNamedError PgNamedError
     deriving stock (Show, Eq)
+
+-- | Map 'AppError' into a HTTP error code.
+toHttpError :: CakeSlayer.ErrorWithSource AppError -> Servant.ServerError
+toHttpError CakeSlayer.ErrorWithSource{..} = case errorWithSourceType of
+    NotFound               -> err404
+    ServerError msg        -> err500 { errBody = encodeUtf8 msg }
+    NotAllowed msg         -> err401 { errBody = encodeUtf8 msg }
+    Invalid msg            -> err417 { errBody = encodeUtf8 msg }
+    MissingHeader name     -> err401 { errBody = toLazy $ "Header not found: " <> foldedCase name }
+    HeaderDecodeError name -> err401 { errBody = encodeUtf8 $ "Unable to decode header: " <> name }
+    DbError e              -> err500 { errBody = encodeUtf8 e }
+    DbNamedError e         -> err500 { errBody = show e }

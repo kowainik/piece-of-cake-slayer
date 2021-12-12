@@ -1,7 +1,7 @@
 module Main (main) where
 
-import Piece (someFunc)
+import qualified Piece
 
 
 main :: IO ()
-main = someFunc
+main = Piece.main

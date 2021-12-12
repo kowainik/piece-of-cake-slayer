@@ -56,6 +56,7 @@ common common-options
                        LambdaCase
                        MultiParamTypeClasses
                        OverloadedStrings
+                       PatternSynonyms
                        RecordWildCards
                        ScopedTypeVariables
                        StandaloneDeriving
@@ -76,19 +77,28 @@ library
                            Piece.Core.Id
                            Piece.Core.Item
                            Piece.Core.WithId
+                      -- Pure.Effects
+                           Piece.Effects.Log
                       -- Piece.Db
                            Piece.Db.Item
                            Piece.Db.Schema
+                         Piece.Server
+                           Piece.Server.Item
+                           Piece.Server.Types
 
   build-depends:       aeson ^>= 1.5
                      , cake-slayer ^>= 0.0
+                     , case-insensitive ^>= 1.2
                      , co-log ^>= 0.4
                      , elm-street ^>= 0.1
                      , http-types ^>= 0.12
                      , mtl
                      , postgresql-simple ^>= 0.6
                      , postgresql-simple-named ^>= 0.0
+                     , servant ^>= 0.18
+                     , servant-server ^>= 0.18
                      , unliftio ^>= 0.2
+                     , warp ^>= 3.3
 
 executable piece-of-cake-slayer
   import:              common-options
