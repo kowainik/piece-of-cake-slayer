@@ -58,11 +58,11 @@ $ curl localhost:8080/items
 
 $ curl -XPOST \
     -H 'Content-Type: application/json' \
-	localhost:8080/createItem \
-	-d '{"tag": "Item", "text": "New item"}'
+    localhost:8080/createItem \
+    -d '{"tag": "Item", "text": "New item"}'
 
 $ curl -XPOST \
     -H 'Content-Type: application/json' \
-	localhost:8080/deleteItem \
-	-d '1'
+    localhost:8080/deleteItem \
+    -d '1'
 ```
