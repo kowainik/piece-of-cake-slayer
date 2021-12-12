@@ -117,7 +117,15 @@ test-suite piece-of-cake-slayer-test
   hs-source-dirs:      test
   main-is:             Spec.hs
 
+  other-modules:       Test.Assert
+                       Test.Db
+                        Test.Db.Item
+
+
   build-depends:       piece-of-cake-slayer
+                     , cake-slayer
+                     , hspec ^>= 2.9
+                     , resource-pool
 
   ghc-options:         -threaded
                        -rtsopts
