@@ -47,8 +47,12 @@ tags
 
 # Emacs
 *#
+.\#*
 .dir-locals.el
 TAGS
+
+# direnv
+.envrc
 
 # other
 .DS_Store
